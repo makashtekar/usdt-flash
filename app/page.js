@@ -1,10 +1,19 @@
+"use client";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from "@/components/ui/navigation-menu";
 import Link from "next/link";
 import { ArrowRight, Zap, DollarSign, Sprout, ArrowRightLeft, TrendingUp, Activity, Lock, CheckCircle } from "lucide-react";
+import Lightning from "@/components/ui/ligtht";
+import { useMemo } from "react";
 
 export default function Home() {
+  // Generate random values for Lightning component on each page load
+  const lightningConfig = useMemo(() => ({
+    hue: Math.floor(Math.random() * 361), // Random hue between 0-360
+    size: Math.random() * 3.0, // Random size between 0.0-3.0
+  }), []);
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
       {/* Background Pattern */}
@@ -67,7 +76,21 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section className=" mx-auto px-4 py-20 text-center hero-dark">
+      <section className="relative mx-auto px-4 py-20 text-center hero-dark overflow-hidden">
+        {/* Lightning Background */}
+        <div className="absolute inset-0 z-0">
+          <Lightning
+            hue={lightningConfig.hue}
+            xOffset={0}
+            speed={1.5}
+            intensity={0.8}
+            size={lightningConfig.size}
+          />
+        </div>
+        
+        {/* Dark overlay to ensure text readability */}
+        <div className="absolute inset-0 bg-black/30 z-5"></div>
+        
         <div className="max-w-4xl mx-auto relative z-10">
           <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 bg-clip-text text-transparent animate-fade-in-up animate-pulse-gradient">
             USDT FLASH: The Speed of Now.
