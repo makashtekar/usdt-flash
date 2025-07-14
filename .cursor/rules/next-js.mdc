@@ -1,0 +1,12 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+Follow these steps to set up and build your Next.js website:
+
+Initialize the Project: Create a Next.js project using JavaScript.
+Set Up Tailwind CSS: Install and configure Tailwind CSS for styling.
+Add Shadcn UI: Use the Shadcn UI CLI to integrate accessible components.
+Add React Bits: Install React Bits for animated components, following its documentation.
+Build and Test: Create pages and components based on your MVP document, ensuring responsiveness and accessibility, then test and deploy.
