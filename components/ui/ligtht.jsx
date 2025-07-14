@@ -20,11 +20,16 @@ const Lightning = ({
     resizeCanvas();
     window.addEventListener("resize", resizeCanvas);
 
-    const gl = canvas.getContext("webgl");
+    const gl = canvas.getContext("webgl", { alpha: true, premultipliedAlpha: false });
     if (!gl) {
       console.error("WebGL not supported");
       return;
     }
+    
+    // Enable transparency
+    gl.enable(gl.BLEND);
+    gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+    gl.clearColor(0.0, 0.0, 0.0, 0.0); // Transparent background
 
     const vertexShaderSource = `
       attribute vec2 aPosition;
@@ -105,7 +110,10 @@ const Lightning = ({
           vec3 baseColor = hsv2rgb(vec3(uHue / 360.0, 0.7, 0.8));
           vec3 col = baseColor * pow(mix(0.0, 0.07, hash11(iTime * uSpeed)) / dist, 1.0) * uIntensity;
           col = pow(col, vec3(1.0));
-          fragColor = vec4(col, 1.0);
+          
+          // Calculate alpha based on lightning intensity
+          float alpha = clamp(pow(mix(0.0, 0.07, hash11(iTime * uSpeed)) / dist, 1.0) * uIntensity, 0.0, 1.0);
+          fragColor = vec4(col, alpha);
       }
 
       void main() {
@@ -170,6 +178,7 @@ const Lightning = ({
     const render = () => {
       resizeCanvas();
       gl.viewport(0, 0, canvas.width, canvas.height);
+      gl.clear(gl.COLOR_BUFFER_BIT); // Clear with transparent background
       gl.uniform2f(iResolutionLocation, canvas.width, canvas.height);
       const currentTime = performance.now();
       gl.uniform1f(iTimeLocation, (currentTime - startTime) / 1000.0);
@@ -188,7 +197,7 @@ const Lightning = ({
     };
   }, [hue, xOffset, speed, intensity, size]);
 
-  return <canvas ref={canvasRef} className="w-full h-full relative" />;
+  return <canvas ref={canvasRef} className="w-full h-full relative" style={{ background: 'transparent' }} />;
 };
 
 export default Lightning;

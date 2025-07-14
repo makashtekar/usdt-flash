@@ -65,7 +65,7 @@ export default function Technology() {
       </nav>
 
       {/* Hero Section */}
-      <section className="container mx-auto px-4 py-20 text-center hero-dark">
+      <section className=" mx-auto px-4 py-20 text-center hero-dark">
         <div className="max-w-4xl mx-auto relative z-10">
           <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 bg-clip-text text-transparent">
             Built for Performance and Security
