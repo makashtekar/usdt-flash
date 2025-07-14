@@ -111,7 +111,7 @@ export default function Technology() {
                   <div>
                     <h4 className="font-semibold text-lg mb-2 text-slate-100">Minimal Cost</h4>
                     <p className="text-slate-300">
-                      The network's efficiency allows for transaction fees that are consistently less than a cent.
+                      The network&apos;s efficiency allows for transaction fees that are consistently less than a cent.
                     </p>
                   </div>
                 </div>
@@ -157,7 +157,7 @@ export default function Technology() {
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-100">Performance That Speaks</h2>
             <p className="text-xl text-slate-300 max-w-2xl mx-auto">
-              Real numbers that demonstrate Solana's superior performance
+              Real numbers that demonstrate Solana&apos;s superior performance
             </p>
           </div>
           

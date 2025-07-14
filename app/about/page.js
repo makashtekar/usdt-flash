@@ -210,7 +210,7 @@ export default function About() {
           <div className="max-w-3xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Join Our Mission?</h2>
             <p className="text-xl mb-8">
-              Be part of the revolution that's making finance accessible, efficient, and fair for everyone.
+              Be part of the revolution that&apos;s making finance accessible, efficient, and fair for everyone.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" className="bg-white/10 hover:bg-white/20 border border-white/20 text-white transform hover:scale-105 transition-all duration-300">
